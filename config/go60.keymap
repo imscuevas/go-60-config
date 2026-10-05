@@ -19,8 +19,9 @@
 
 // layers
 #define LAYER_Base 0
-#define LAYER_Numbers 1
-#define LAYER_Magic 2
+#define LAYER_Nav 1
+#define LAYER_Numbers 2
+#define LAYER_Magic 3
 
 
 / {
@@ -138,12 +139,23 @@
         compatible = "zmk,keymap";
         layer_Base {
             bindings = <
-                &magic LAYER_Magic 0    &none       &none       &none       &none       &none                                           &none                   &none       &none       &none       &none       &none
-                &none                   &kp DOT     &kp COMMA   &kp SEMI    &kp P       &kp Y                                           &kp F                   &kp G       &kp C       &kp H       &kp L       &kp MINUS
-                &kp CAPS                &hm LGUI A  &hm LALT O  &hm LCTRL E &hm LSHFT U &kp I                                           &kp D                   &hm RSHFT R &hm RCTRL T &hm LALT N  &hm RGUI S  &kp SQT
-                &none                   &kp FSLH    &hm RALT Q  &kp J       &kp K       &kp X                                           &kp B                   &kp M       &kp W       &hm RALT V  &kp Z       &none
-                                                    &none       &none       &kp ESC                                                                             &kp DEL     &none       &none
-                                                                                        &kp SPACE   &kp TAB &none   &none   &kp BSPC    &ltq LAYER_Numbers RET
+                &magic LAYER_Magic 0    &none       &none       &none       &none       &none                                                       &none                   &none       &none       &none       &none       &none
+                &none                   &kp DOT     &kp COMMA   &kp SEMI    &kp P       &kp Y                                                       &kp F                   &kp G       &kp C       &kp H       &kp L       &kp MINUS
+                &kp CAPS                &hm LGUI A  &hm LALT O  &hm LCTRL E &hm LSHFT U &kp I                                                       &kp D                   &hm RSHFT R &hm RCTRL T &hm LALT N  &hm RGUI S  &kp SQT
+                &none                   &kp FSLH    &hm RALT Q  &kp J       &kp K       &kp X                                                       &kp B                   &kp M       &kp W       &hm RALT V  &kp Z       &none
+                                                    &none       &none       &kp ESC                                                                                         &kp DEL     &none       &none
+                                                                                        &ltq LAYER_Nav SPACE    &kp TAB &none   &none   &kp BSPC    &ltq LAYER_Numbers RET
+            >;
+        };
+
+        layer_Nav {
+            bindings = <
+                &none   &none       &none       &none       &none       &none                                       &none       &none       &none       &none       &none       &none
+                &none   &none       &none       &none       &none       &none                                       &kp LC(Z)   &kp LC(V)   &kp LC(C)   &kp LC(X)   &kp LC(Y)   &none
+                &none   &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none                                       &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &none       &none
+                &none   &none       &kp RALT    &none       &none       &none                                       &kp HOME    &kp PG_DN   &kp PG_UP   &kp END     &kp INS     &none
+                                    &none       &none       &none                                                               &kp DEL     &none       &none
+                                                                        &none   &none   &none   &none   &kp BSPC    &kp RET
             >;
         };
 

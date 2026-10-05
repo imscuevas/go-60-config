@@ -53,6 +53,13 @@
             quick-tap-ms = <200>;
             require-prior-idle-ms = <0>;
         };
+        bt_clr_all: bluetooth_clear_all {
+            compatible = "zmk,behavior-tap-dance";
+            label = "Bluetooth Clear/Clear all";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&bt BT_CLR>, <&bt BT_CLR_ALL>;
+        };
         magic: magic {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;

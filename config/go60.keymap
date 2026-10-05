@@ -19,7 +19,9 @@
 
 // layers
 #define LAYER_Base 0
-#define LAYER_Magic 1
+#define LAYER_Numbers 1
+#define LAYER_Magic 2
+
 
 / {
     input_processors {
@@ -40,6 +42,14 @@
             flavor = "tap-preferred";
             quick-tap-ms = <200>;
             require-prior-idle-ms = <150>;
+        };
+        ltq: ltq {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            bindings = <&mo>, <&kp>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <0>;
         };
         magic: magic {
             compatible = "zmk,behavior-hold-tap";
@@ -128,12 +138,23 @@
         compatible = "zmk,keymap";
         layer_Base {
             bindings = <
-                &magic LAYER_Magic 0    &none       &none       &none       &none       &none                                           &none   &none       &none       &none       &none       &none
-                &none                   &kp DOT     &kp COMMA   &kp SEMI    &kp P       &kp Y                                           &kp F   &kp G       &kp C       &kp H       &kp L       &kp MINUS
-                &kp CAPS                &hm LGUI A  &hm LALT O  &hm LCTRL E &hm LSHFT U &kp I                                           &kp D   &hm LSHFT R &hm LCTRL T &hm LALT N  &hm LGUI S  &kp SQT
-                &none                   &kp FSLH    &hm RALT Q  &kp J       &kp K       &kp X                                           &kp B   &kp M       &kp W       &hm RALT V  &kp Z       &none
-                                                    &none       &none       &kp ESC                                                             &kp DEL     &none       &none
-                                                                                        &kp SPACE   &kp TAB &none   &none   &kp BSPC    &kp RET
+                &magic LAYER_Magic 0    &none       &none       &none       &none       &none                                           &none                   &none       &none       &none       &none       &none
+                &none                   &kp DOT     &kp COMMA   &kp SEMI    &kp P       &kp Y                                           &kp F                   &kp G       &kp C       &kp H       &kp L       &kp MINUS
+                &kp CAPS                &hm LGUI A  &hm LALT O  &hm LCTRL E &hm LSHFT U &kp I                                           &kp D                   &hm RSHFT R &hm RCTRL T &hm LALT N  &hm RGUI S  &kp SQT
+                &none                   &kp FSLH    &hm RALT Q  &kp J       &kp K       &kp X                                           &kp B                   &kp M       &kp W       &hm RALT V  &kp Z       &none
+                                                    &none       &none       &kp ESC                                                                             &kp DEL     &none       &none
+                                                                                        &kp SPACE   &kp TAB &none   &none   &kp BSPC    &ltq LAYER_Numbers RET
+            >;
+        };
+
+        layer_Numbers {
+            bindings = <
+                &none   &none       &none   &none  &none     &none                                          &none   &none       &none       &none       &none       &none
+                &none   &kp SQT     &kp N7  &kp N8 &kp N9    &kp BSLH                                       &none   &none       &none       &kp RALT    &none       &none
+                &none   &kp LBKT    &kp N4  &kp N5 &kp N6    &kp RBKT                                       &none   &kp RSHFT   &kp LCTRL   &kp LALT    &kp RGUI    &none
+                &none   &kp NUBS    &kp N1  &kp N2 &kp N3    &kp GRAVE                                      &none   &none       &kp COMMA   &kp DOT     &kp FSLH    &none
+                                    &none   &none  &kp EQUAL                                                        &none       &none       &none
+                                                             &kp N0     &kp MINUS   &none   &none   &none   &none
             >;
         };
 

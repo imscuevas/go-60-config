@@ -21,8 +21,10 @@
 #define LAYER_Base 0
 #define LAYER_Nav 1
 #define LAYER_Media 2
-#define LAYER_Numbers 3
-#define LAYER_Magic 4
+#define LAYER_Mouse 3
+#define LAYER_Scroll 4
+#define LAYER_Numbers 5
+#define LAYER_Magic 6
 
 
 / {
@@ -41,6 +43,15 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             bindings = <&kp>, <&kp>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <150>;
+        };
+        hml: hml {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&kp>;
             flavor = "tap-preferred";
             quick-tap-ms = <200>;
             require-prior-idle-ms = <150>;
@@ -147,11 +158,11 @@
         compatible = "zmk,keymap";
         layer_Base {
             bindings = <
-                &magic LAYER_Magic 0    &none       &none       &none       &none                   &none                                                       &none                   &none       &none       &none       &none       &none
-                &none                   &kp DOT     &kp COMMA   &kp SEMI    &kp P                   &kp Y                                                       &kp F                   &kp G       &kp C       &kp H       &kp L       &kp MINUS
-                &kp CAPS                &hm LGUI A  &hm LALT O  &hm LCTRL E &hm LSHFT U             &kp I                                                       &kp D                   &hm RSHFT R &hm RCTRL T &hm LALT N  &hm RGUI S  &kp SQT
-                &none                   &kp FSLH    &hm RALT Q  &kp J       &kp K                   &kp X                                                       &kp B                   &kp M       &kp W       &hm RALT V  &kp Z       &none
-                                                    &none       &none       &ltq LAYER_Media ESC                                                                                        &kp DEL     &none       &none
+                &magic LAYER_Magic 0    &none                   &none       &none       &none                   &none                                                       &none                   &none       &none       &none       &none       &none
+                &none                   &kp DOT                 &kp COMMA   &kp SEMI    &kp P                   &kp Y                                                       &kp F                   &kp G       &kp C       &kp H       &kp L       &kp MINUS
+                &kp CAPS                &hm LGUI A              &hm LALT O  &hm LCTRL E &hm LSHFT U             &kp I                                                       &kp D                   &hm RSHFT R &hm RCTRL T &hm LALT N  &hm RGUI S  &kp SQT
+                &none                   &hml LAYER_Mouse FSLH   &hm RALT Q  &kp J       &kp K                   &kp X                                                       &kp B                   &kp M       &kp W       &hm RALT V  &kp Z       &none
+                                                                &none       &none       &ltq LAYER_Media ESC                                                                                        &kp DEL     &none       &none
                                                                                                     &ltq LAYER_Nav SPACE    &kp TAB &none   &none   &kp BSPC    &ltq LAYER_Numbers RET
             >;
         };
@@ -175,6 +186,28 @@
                 &none   &none       &kp RALT    &none       &none       &none                                       &bt_0           &bt_1           &bt_2           &bt_3           &bt_4           &none
                                     &none       &none       &none                                                                   &kp C_MUTE      &none           &none
                                                                         &none   &none   &none   &none   &kp C_STOP  &kp C_PP
+            >;
+        };
+
+        layer_Mouse {
+            bindings = <
+                &none   &none       &none               &none       &none       &none                                           &none   &none   &none   &none   &none   &none
+                &none   &none       &kp RALT            &none       &none       &none                                           &none   &none   &none   &none   &none   &none
+                &none   &kp LGUI    &kp LALT            &kp LCTRL   &kp LSHFT   &none                                           &none   &none   &none   &none   &none   &none
+                &none   &none       &mo LAYER_Scroll    &mkp MB5    &mkp MB4    &none                                           &none   &none   &none   &none   &none   &none
+                                    &none               &none       &mkp MCLK                                                           &none   &none   &none
+                                                                                &mkp LCLK   &mkp RCLK   &none   &none   &none   &none
+            >;
+        };
+
+        layer_Scroll {
+            bindings = <
+                &none   &none       &none       &none       &none       &none                                           &none   &none   &none   &none   &none   &none
+                &none   &none       &kp RALT    &none       &none       &none                                           &none   &none   &none   &none   &none   &none
+                &none   &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none                                           &none   &none   &none   &none   &none   &none
+                &none   &none       &none       &mkp MB5    &mkp MB4    &none                                           &none   &none   &none   &none   &none   &none
+                                    &none       &none       &mkp MCLK                                                           &none   &none   &none
+                                                                        &mkp LCLK   &mkp RCLK   &none   &none   &none   &none
             >;
         };
 

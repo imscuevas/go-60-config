@@ -24,8 +24,9 @@
 #define LAYER_Mouse 3
 #define LAYER_Scroll 4
 #define LAYER_Numbers 5
-#define LAYER_Magic 6
-
+#define LAYER_Sym 6
+#define LAYER_Fun 7
+#define LAYER_Magic 8
 
 / {
     input_processors {
@@ -158,12 +159,12 @@
         compatible = "zmk,keymap";
         layer_Base {
             bindings = <
-                &magic LAYER_Magic 0    &none                   &none       &none       &none                   &none                                                       &none                   &none       &none       &none       &none       &none
-                &none                   &kp DOT                 &kp COMMA   &kp SEMI    &kp P                   &kp Y                                                       &kp F                   &kp G       &kp C       &kp H       &kp L       &kp MINUS
-                &kp CAPS                &hm LGUI A              &hm LALT O  &hm LCTRL E &hm LSHFT U             &kp I                                                       &kp D                   &hm RSHFT R &hm RCTRL T &hm LALT N  &hm RGUI S  &kp SQT
-                &none                   &hml LAYER_Mouse FSLH   &hm RALT Q  &kp J       &kp K                   &kp X                                                       &kp B                   &kp M       &kp W       &hm RALT V  &kp Z       &none
-                                                                &none       &none       &ltq LAYER_Media ESC                                                                                        &kp DEL     &none       &none
-                                                                                                    &ltq LAYER_Nav SPACE    &kp TAB &none   &none   &kp BSPC    &ltq LAYER_Numbers RET
+                &magic LAYER_Magic 0    &none                   &none       &none       &none                   &none                                                   &none                   &none               &none       &none       &none       &none
+                &none                   &kp DOT                 &kp COMMA   &kp SEMI    &kp P                   &kp Y                                                   &kp F                   &kp G               &kp C       &kp H       &kp L       &kp MINUS
+                &kp CAPS                &hm LGUI A              &hm LALT O  &hm LCTRL E &hm LSHFT U             &kp I                                                   &kp D                   &hm RSHFT R         &hm RCTRL T &hm LALT N  &hm RGUI S  &kp SQT
+                &none                   &hml LAYER_Mouse FSLH   &hm RALT Q  &kp J       &kp K                   &kp X                                                   &kp B                   &kp M               &kp W       &hm RALT V  &kp Z       &none
+                                                                &none       &none       &ltq LAYER_Media ESC                                                                                    &ltq LAYER_Fun DEL  &none       &none
+                                                                                                    &ltq LAYER_Nav SPACE    &kp TAB &none   &none   &ltq LAYER_Sym BSPC &ltq LAYER_Numbers RET
             >;
         };
 
@@ -219,6 +220,28 @@
                 &none   &kp NUBS    &kp N1  &kp N2 &kp N3    &kp GRAVE                                      &none   &none       &kp COMMA   &kp DOT     &kp FSLH    &none
                                     &none   &none  &kp EQUAL                                                        &none       &none       &none
                                                              &kp N0     &kp MINUS   &none   &none   &none   &none
+            >;
+        };
+
+        layer_Sym {
+            bindings = <
+                &none   &none           &none               &none           &none           &none                                   &none   &none       &none       &none       &none       &none
+                &none   &kp EQUAL       &kp LS(N1)          &kp RA(LBKT)    &kp RA(RBKT)    &none                                   &none   &none       &none       &none       &none       &none
+                &none   &kp LS(EQUAL)   &kp LS(MINUS)       &kp LS(N8)      &kp LS(N9)      &none                                   &none   &kp RSHFT   &kp RCTRL   &kp LALT    &kp RGUI    &none
+                &none   &kp NON_US_BSLH &kp LS(NON_US_BSLH) &kp RA(SQT)     &kp RA(BSLH)    &none                                   &none   &none       &none       &kp RALT    &none       &none
+                                        &none               &none           &none                                                           &none       &none       &none
+                                                                                            &none   &none   &none   &none   &none   &none
+            >;
+        };
+
+        layer_Fun {
+            bindings = <
+                &none   &none   &none   &none   &none       &none                                             &none &none       &none       &none       &none       &none
+                &none   &kp F12 &kp F7  &kp F8  &kp F9      &kp PSCRN                                         &none &none       &none       &none       &none       &none
+                &none   &kp F11 &kp F4  &kp F5  &kp F6      &kp SLCK                                          &none &kp RSHFT   &kp RCTRL   &kp LALT    &kp RGUI    &none
+                &none   &kp F10 &kp F1  &kp F2  &kp F3      &kp PAUSE_BREAK                                   &none &none       &none       &kp RALT    &none       &none
+                                &none   &none   &kp K_MENU                                                          &none       &none       &none
+                                                            &kp SPACE       &kp TAB   &none   &none   &none   &none
             >;
         };
 

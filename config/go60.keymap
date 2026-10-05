@@ -64,6 +64,12 @@
             tapping-term-ms = <200>;
             bindings = <&bt_select_3>, <&bt BT_DISC 3>;
         };
+        bt_4: bt_4 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&bt_select_4>, <&bt BT_DISC 4>;
+        };
     };
 
     macros {
@@ -101,6 +107,13 @@
                 = <&out OUT_BLE>,
                   <&bt BT_SEL 3>;
         };
+        bt_select_4: bt_select_4 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&out OUT_BLE>,
+                  <&bt BT_SEL 4>;
+        };
     };
 
     keymap {
@@ -121,7 +134,7 @@
                 &bt BT_CLR  &kp C_BRI_DN    &kp C_BRI_UP    &kp C_PREV      &kp C_NEXT      &kp C_PP                                            &kp C_MUTE  &kp C_VOL_DN    &kp C_VOL_UP    &none   &none   &bt BT_CLR_ALL
                 &bootloader &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_BRI &rgb_ug RGB_TOG                                     &none       &none           &none           &none   &none   &bootloader
                 &sys_reset  &rgb_ug RGB_SPD &rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_BRD &rgb_ug RGB_EFF                                     &none       &none           &none           &none   &none   &sys_reset
-                &none       &none           &bt_0           &bt_1           &bt_2           &bt_3                                               &none       &none           &none           &none   &none   &none
+                &none       &bt_0           &bt_1           &bt_2           &bt_3           &bt_4                                               &none       &none           &none           &none   &none   &none
                                             &out OUT_USB    &none           &none                                                                           &none           &none           &none
                                                                                             &none           &none   &none   &none   &none       &none
             >;

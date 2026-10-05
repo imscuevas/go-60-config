@@ -21,12 +21,19 @@ jobs:
         with:
           name: moergo-glove80-zmk-dev
           skipPush: true
-      - name: Build Go60 combined firmware
+      - name: Build Go60 combined firmware & settings reset
         run: nix-build config -o combined
-      - name: Copy result out of nix store
-        run: cp combined/go60.uf2 go60.uf2
-      - name: Upload result
+      - name: Copy results out of nix store
+        run: |
+          cp combined/go60.uf2 go60.uf2
+          cp combined/settings_reset.uf2 settings_reset.uf2
+      - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
           name: go60.uf2
           path: go60.uf2
+      - name: Upload settings reset
+        uses: actions/upload-artifact@v4
+        with:
+          name: settings_reset.uf2
+          path: settings_reset.uf2

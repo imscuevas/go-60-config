@@ -37,6 +37,7 @@ COPY --chmod=755 <<EOF /bin/entrypoint.sh
     cd /config
     nix-build ./config --arg firmware 'import /src/default.nix {}' -j2 -o /tmp/combined --show-trace
     install -o "\$UID" -g "\$GID" /tmp/combined/go60.uf2 ./go60.uf2
+    install -o "\$UID" -g "\$GID" /tmp/combined/settings_reset.uf2 ./settings_reset.uf2
 EOF
 
 ENTRYPOINT ["/bin/entrypoint.sh"]

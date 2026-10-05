@@ -20,8 +20,9 @@
 // layers
 #define LAYER_Base 0
 #define LAYER_Nav 1
-#define LAYER_Numbers 2
-#define LAYER_Magic 3
+#define LAYER_Media 2
+#define LAYER_Numbers 3
+#define LAYER_Magic 4
 
 
 / {
@@ -139,12 +140,12 @@
         compatible = "zmk,keymap";
         layer_Base {
             bindings = <
-                &magic LAYER_Magic 0    &none       &none       &none       &none       &none                                                       &none                   &none       &none       &none       &none       &none
-                &none                   &kp DOT     &kp COMMA   &kp SEMI    &kp P       &kp Y                                                       &kp F                   &kp G       &kp C       &kp H       &kp L       &kp MINUS
-                &kp CAPS                &hm LGUI A  &hm LALT O  &hm LCTRL E &hm LSHFT U &kp I                                                       &kp D                   &hm RSHFT R &hm RCTRL T &hm LALT N  &hm RGUI S  &kp SQT
-                &none                   &kp FSLH    &hm RALT Q  &kp J       &kp K       &kp X                                                       &kp B                   &kp M       &kp W       &hm RALT V  &kp Z       &none
-                                                    &none       &none       &kp ESC                                                                                         &kp DEL     &none       &none
-                                                                                        &ltq LAYER_Nav SPACE    &kp TAB &none   &none   &kp BSPC    &ltq LAYER_Numbers RET
+                &magic LAYER_Magic 0    &none       &none       &none       &none                   &none                                                       &none                   &none       &none       &none       &none       &none
+                &none                   &kp DOT     &kp COMMA   &kp SEMI    &kp P                   &kp Y                                                       &kp F                   &kp G       &kp C       &kp H       &kp L       &kp MINUS
+                &kp CAPS                &hm LGUI A  &hm LALT O  &hm LCTRL E &hm LSHFT U             &kp I                                                       &kp D                   &hm RSHFT R &hm RCTRL T &hm LALT N  &hm RGUI S  &kp SQT
+                &none                   &kp FSLH    &hm RALT Q  &kp J       &kp K                   &kp X                                                       &kp B                   &kp M       &kp W       &hm RALT V  &kp Z       &none
+                                                    &none       &none       &ltq LAYER_Media ESC                                                                                        &kp DEL     &none       &none
+                                                                                                    &ltq LAYER_Nav SPACE    &kp TAB &none   &none   &kp BSPC    &ltq LAYER_Numbers RET
             >;
         };
 
@@ -156,6 +157,17 @@
                 &none   &none       &kp RALT    &none       &none       &none                                       &kp HOME    &kp PG_DN   &kp PG_UP   &kp END     &kp INS     &none
                                     &none       &none       &none                                                               &kp DEL     &none       &none
                                                                         &none   &none   &none   &none   &kp BSPC    &kp RET
+            >;
+        };
+
+        layer_Media {
+            bindings = <
+                &none   &none       &none       &none       &none       &none                                       &none           &none           &none           &none           &none           &none
+                &none   &none       &none       &none       &none       &none                                       &kp C_BRI_MIN   &kp C_BRI_DN    &kp C_BRI_UP    &kp C_BRI_MAX   &kp C_BRI_AUTO  &bt_clr_all
+                &none   &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none                                       &kp C_PREV      &kp C_VOL_DN    &kp C_VOL_UP    &kp C_NEXT      &out OUT_USB    &none
+                &none   &none       &kp RALT    &none       &none       &none                                       &bt_0           &bt_1           &bt_2           &bt_3           &bt_4           &none
+                                    &none       &none       &none                                                                   &kp C_MUTE      &none           &none
+                                                                        &none   &none   &none   &none   &kp C_STOP  &kp C_PP
             >;
         };
 

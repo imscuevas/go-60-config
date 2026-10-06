@@ -201,23 +201,23 @@
 
         layer_Mouse {
             bindings = <
-                &none   &none       &none               &none       &none       &none                                           &none   &none   &none   &none   &none   &none
-                &none   &none       &kp RALT            &none       &none       &none                                           &none   &none   &none   &none   &none   &none
-                &none   &kp LGUI    &kp LALT            &kp LCTRL   &kp LSHFT   &none                                           &none   &none   &none   &none   &none   &none
-                &none   &none       &mo LAYER_Scroll    &mkp MB5    &mkp MB4    &none                                           &none   &none   &none   &none   &none   &none
-                                    &none               &none       &mkp MCLK                                                           &none   &none   &none
-                                                                                &mkp LCLK   &mkp RCLK   &none   &none   &none   &none
+                &none   &none       &none               &none       &none       &none                                               &none       &none       &none       &none               &none       &none
+                &none   &none       &kp RALT            &none       &none       &none                                               &none       &none       &none       &none               &kp RALT    &none
+                &none   &kp LGUI    &kp LALT            &kp LCTRL   &kp LSHFT   &none                                               &none       &kp RSHFT   &kp RCTRL   &kp LALT            &kp LGUI    &none
+                &none   &none       &mo LAYER_Scroll    &mkp MB5    &mkp MB4    &none                                               &none       &mkp MB4    &mkp MB5    &mo LAYER_Scroll    &none       &none
+                                    &none               &none       &mkp MCLK                                                                   &mkp MCLK   &none       &none
+                                                                                &mkp LCLK   &mkp RCLK   &none   &none   &mkp RCLK   &mkp LCLK
             >;
         };
 
         layer_Scroll {
             bindings = <
-                &none   &none       &none       &none       &none       &none                                           &none   &none   &none   &none   &none   &none
-                &none   &none       &kp RALT    &none       &none       &none                                           &none   &none   &none   &none   &none   &none
-                &none   &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none                                           &none   &none   &none   &none   &none   &none
-                &none   &none       &none       &mkp MB5    &mkp MB4    &none                                           &none   &none   &none   &none   &none   &none
-                                    &none       &none       &mkp MCLK                                                           &none   &none   &none
-                                                                        &mkp LCLK   &mkp RCLK   &none   &none   &none   &none
+                &none   &none       &none       &none       &none       &none                                               &none   &none       &none       &none       &none       &none
+                &none   &none       &kp RALT    &none       &none       &none                                               &none   &none       &none       &none       &kp RALT    &none
+                &none   &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none                                               &none   &kp RSHFT   &kp RCTRL   &kp LALT    &kp LGUI    &none
+                &none   &none       &none       &mkp MB5    &mkp MB4    &none                                               &none   &mkp MB4    &mkp MB5    &none       &none       &none
+                                    &none       &none       &mkp MCLK                                                               &mkp MCLK   &none       &none
+                                                                        &mkp LCLK   &mkp RCLK   &none   &none   &mkp RCLK   &mkp LCLK
             >;
         };
 
@@ -272,5 +272,5 @@
 };
 
 &cirque_lh_listener {
-    input-processors = <&zip_xy_to_scroll_mapper>, <&zip_xy_scaler 1 8>, <&zip_click_to_right_click_mapper>;
+    input-processors = <&zip_xy_scaler 1 1>, <&zip_xy_to_scroll_mapper>, <&zip_click_to_right_click_mapper>;
 };

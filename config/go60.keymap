@@ -28,6 +28,10 @@
 #define LAYER_Fun 7
 #define LAYER_Magic 8
 
+&caps_word {
+        continue-list = <BACKSPACE DELETE SLASH SEMI>;
+};
+
 / {
     input_processors {
         zip_click_to_right_click_mapper: zip_click_to_right_click_mapper {
@@ -64,6 +68,12 @@
             bindings = <&mo>, <&kp>;
             quick-tap-ms = <200>;
             require-prior-idle-ms = <0>;
+        };
+        clw: caps_lock_word {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp CAPSLOCK>, <&caps_word>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         bt_clr_all: bluetooth_clear_all {
             compatible = "zmk,behavior-tap-dance";
@@ -117,7 +127,6 @@
             #binding-cells = <0>;
             bindings = <&rgb_ug RGB_STATUS>;
         };
-
         bt_select_0: bt_select_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -161,7 +170,7 @@
             bindings = <
                 &magic LAYER_Magic 0    &none                   &none       &none       &none                   &none                                                   &none                   &none               &none       &none       &none       &none
                 &none                   &kp DOT                 &kp COMMA   &kp SEMI    &kp P                   &kp Y                                                   &kp F                   &kp G               &kp C       &kp H       &kp L       &kp MINUS
-                &kp CAPS                &hm LGUI A              &hm LALT O  &hm LCTRL E &hm LSHFT U             &kp I                                                   &kp D                   &hm RSHFT R         &hm RCTRL T &hm LALT N  &hm RGUI S  &kp SQT
+                &clw                    &hm LGUI A              &hm LALT O  &hm LCTRL E &hm LSHFT U             &kp I                                                   &kp D                   &hm RSHFT R         &hm RCTRL T &hm LALT N  &hm RGUI S  &kp SQT
                 &none                   &hml LAYER_Mouse FSLH   &hm RALT Q  &kp J       &kp K                   &kp X                                                   &kp B                   &kp M               &kp W       &hm RALT V  &kp Z       &none
                                                                 &none       &none       &ltq LAYER_Media ESC                                                                                    &ltq LAYER_Fun DEL  &none       &none
                                                                                                     &ltq LAYER_Nav SPACE    &kp TAB &none   &none   &ltq LAYER_Sym BSPC &ltq LAYER_Numbers RET

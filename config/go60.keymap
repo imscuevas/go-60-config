@@ -278,4 +278,5 @@
 
 &cirque_lh_listener {
     input-processors = <&zip_xy_scaler 0 8>, <&zip_click_to_right_click_mapper>;
+    input-processors = <&zip_xy_scaler 0 8>, <&zip_click_to_right_click_mapper>;
 };

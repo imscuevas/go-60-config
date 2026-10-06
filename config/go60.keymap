@@ -269,8 +269,13 @@
 
 &cirque_rh_listener {
     input-processors = <&zip_xy_scaler 1 1>;
+
+    scroller {
+        layers = <LAYER_Nav>;
+        input-processors = <&zip_xy_scaler 1 8>, <&zip_xy_transform(INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_to_scroll_mapper>, <&zip_xy_to_scroll_mapper>, <&zip_click_to_right_click_mapper>;
+    };
 };
 
 &cirque_lh_listener {
-    input-processors = <&zip_xy_scaler 1 8>, <&zip_xy_transform(INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_to_scroll_mapper>, <&zip_click_to_right_click_mapper>;
+    input-processors = <&zip_xy_scaler 0 8>, <&zip_click_to_right_click_mapper>;
 };

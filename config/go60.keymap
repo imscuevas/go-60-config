@@ -82,6 +82,20 @@
             tapping-term-ms = <200>;
             bindings = <&bt BT_CLR>, <&bt BT_CLR_ALL>;
         };
+        rg: reset_guarded {
+            compatible = "zmk,behavior-tap-dance";
+            label = "Reset guarded";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&none>, <&sys_reset>;
+        };
+        bg: bootloader_guarded {
+            compatible = "zmk,behavior-tap-dance";
+            label = "Reset guarded";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&none>, <&bootloader>;
+        };
         magic: magic {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -179,7 +193,7 @@
 
         layer_Nav {
             bindings = <
-                &none   &none       &none       &none       &none       &none                                       &none       &none       &none       &none       &none       &none
+                &bg     &rg         &none       &none       &none       &none                                       &none       &none       &none       &none       &none       &none
                 &none   &none       &none       &none       &none       &none                                       &kp LC(Z)   &kp LC(V)   &kp LC(C)   &kp LC(X)   &kp LC(Y)   &none
                 &none   &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none                                       &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &none       &none
                 &none   &none       &kp RALT    &none       &none       &none                                       &kp HOME    &kp PG_DN   &kp PG_UP   &kp END     &kp INS     &none
@@ -223,7 +237,7 @@
 
         layer_Numbers {
             bindings = <
-                &none   &none       &none   &none  &none     &none                                          &none   &none       &none       &none       &none       &none
+                &none   &none       &none   &none  &none     &none                                          &none   &none       &none       &none       &rg         &bg
                 &none   &kp SQT     &kp N7  &kp N8 &kp N9    &kp BSLH                                       &none   &none       &none       &kp RALT    &none       &none
                 &none   &kp LBKT    &kp N4  &kp N5 &kp N6    &kp RBKT                                       &none   &kp RSHFT   &kp LCTRL   &kp LALT    &kp RGUI    &none
                 &none   &kp NUBS    &kp N1  &kp N2 &kp N3    &kp GRAVE                                      &none   &none       &kp COMMA   &kp DOT     &kp FSLH    &none
@@ -256,12 +270,12 @@
 
         layer_Magic {
             bindings = <
-                &bt BT_CLR  &kp C_BRI_DN    &kp C_BRI_UP    &kp C_PREV      &kp C_NEXT      &kp C_PP                                            &kp C_MUTE  &kp C_VOL_DN    &kp C_VOL_UP    &none   &none   &bt BT_CLR_ALL
-                &bootloader &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_BRI &rgb_ug RGB_TOG                                     &none       &none           &none           &none   &none   &bootloader
-                &sys_reset  &rgb_ug RGB_SPD &rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_BRD &rgb_ug RGB_EFF                                     &none       &none           &none           &none   &none   &sys_reset
-                &none       &bt_0           &bt_1           &bt_2           &bt_3           &bt_4                                               &none       &none           &none           &none   &none   &none
-                                            &out OUT_USB    &none           &none                                                                           &none           &none           &none
-                                                                                            &none           &none   &none   &none   &none       &none
+                &none   &none           &none           &none           &none           &none                                               &none   &none   &none   &none   &none   &none         
+                &none   &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_BRI &rgb_ug RGB_TOG                                     &none   &none   &none   &none   &none   &none      
+                &none   &rgb_ug RGB_SPD &rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_BRD &rgb_ug RGB_EFF                                     &none   &none   &none   &none   &none   &none     
+                &none   &none           &none           &none           &none           &none                                               &none   &none   &none   &none   &none   &none
+                                        &none           &none           &none                                                                       &none   &none   &none
+                                                                                        &none           &none   &none   &none   &none       &none
             >;
         };
     };
@@ -274,7 +288,7 @@
         layers = <LAYER_Nav>, <LAYER_Scroll>;
         input-processors = <&zip_xy_to_scroll_mapper>,
                            <&zip_scroll_transform(INPUT_TRANSFORM_Y_INVERT)>,
-                           <&zip_scroll_scaler 1 6>,
+                           <&zip_scroll_scaler 1 4>,
                            <&zip_click_to_right_click_mapper>;
     };
 };

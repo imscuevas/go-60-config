@@ -32,6 +32,10 @@
         continue-list = <BACKSPACE DELETE SLASH SEMI>;
 };
 
+&glidepoint {
+    sensitivity = "2x";
+};
+
 / {
     input_processors {
         zip_click_to_right_click_mapper: zip_click_to_right_click_mapper {

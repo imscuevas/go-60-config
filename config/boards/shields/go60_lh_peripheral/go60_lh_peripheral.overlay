@@ -5,6 +5,12 @@
  */
 
 / {
+    chosen {
+        /delete-property/ zmk,underglow-indicators;
+    };
+
+    /delete-node/ underglow-indicators;
+
     inputs {
         cirque_split_lh: cirque_split@1 {
             compatible = "zmk,input-split";

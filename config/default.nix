@@ -8,7 +8,7 @@ let
   go60_left = firmware.zmk.override {
     board = "go60_lh";
     shield = "go60_lh_peripheral";
-    keymap = "${config}/go60_lh.keymap";
+    keymap = "${config}/go60.keymap";
     kconfig = "${config}/go60.conf";
     extraModules = [ "${config}" ];
   };

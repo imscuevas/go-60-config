@@ -9,9 +9,6 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
-config ZMK_SPLIT_BLE_ROLE_CENTRAL
-    default y
-
 config ZMK_SPLIT
     default y
 
@@ -29,12 +26,6 @@ config BT_MAX_PAIRED
 # Battery fetching from peripherals for display
 config ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING
     default y
-
-config ZMK_BATTERY_REPORTING
-    default y
-
-config ZMK_BATTERY_REPORTING_SPLIT_REPORT_LOWEST_CHARGE
-    default n
 
 # Pointing / Mouse support
 config ZMK_POINTING

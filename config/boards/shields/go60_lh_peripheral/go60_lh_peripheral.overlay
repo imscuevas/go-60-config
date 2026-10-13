@@ -1,0 +1,27 @@
+/*
+ * Copyright (c) 2024 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/ {
+    inputs {
+        cirque_split_lh: cirque_split@1 {
+            compatible = "zmk,input-split";
+            reg = <1>;
+            device = <&glidepoint>;
+        };
+    };
+};
+
+&cirque_split {
+    status = "disabled";
+};
+
+&cirque_lh_listener {
+    status = "disabled";
+};
+
+&cirque_rh_listener {
+    status = "disabled";
+};

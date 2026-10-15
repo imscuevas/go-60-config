@@ -33,7 +33,7 @@
 };
 
 &glidepoint {
-    sensitivity = "2x";
+    sensitivity = "3x";
 };
 
 / {
@@ -228,17 +228,6 @@
             >;
         };
 
-        layer_Scroll {
-            bindings = <
-                &none   &none       &none       &none       &none       &none                                               &none   &none       &none       &none       &none       &none
-                &none   &none       &kp RALT    &none       &none       &none                                               &none   &none       &none       &none       &kp RALT    &none
-                &none   &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none                                               &none   &kp RSHFT   &kp RCTRL   &kp LALT    &kp LGUI    &none
-                &none   &none       &none       &mkp MB5    &mkp MB4    &none                                               &none   &mkp MB4    &mkp MB5    &none       &none       &none
-                                    &none       &none       &mkp MCLK                                                               &mkp MCLK   &none       &none
-                                                                        &mkp LCLK   &mkp RCLK   &none   &none   &mkp RCLK   &mkp LCLK
-            >;
-        };
-
         layer_Numbers {
             bindings = <
                 &none   &none       &none   &none  &none     &none                                          &none   &none       &none       &none       &rg         &bg
@@ -289,7 +278,7 @@
     input-processors = <&zip_xy_scaler 1 1>;
 
     scroller {
-        layers = <LAYER_Nav>, <LAYER_Scroll>;
+        layers = <LAYER_Nav>;
         input-processors = <&zip_xy_to_scroll_mapper>,
                            <&zip_scroll_transform(INPUT_TRANSFORM_Y_INVERT)>,
                            <&zip_scroll_scaler 1 4>,

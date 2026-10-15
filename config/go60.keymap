@@ -22,18 +22,17 @@
 #define LAYER_Nav 1
 #define LAYER_Media 2
 #define LAYER_Mouse 3
-#define LAYER_Scroll 4
-#define LAYER_Numbers 5
-#define LAYER_Sym 6
-#define LAYER_Fun 7
-#define LAYER_Magic 8
+#define LAYER_Numbers 4
+#define LAYER_Sym 5
+#define LAYER_Fun 6
+#define LAYER_Magic 7
 
 &caps_word {
         continue-list = <BACKSPACE DELETE SLASH SEMI>;
 };
 
 &glidepoint {
-    sensitivity = "3x";
+    sensitivity = "2x";
 };
 
 / {
@@ -219,12 +218,12 @@
 
         layer_Mouse {
             bindings = <
-                &none   &none       &none               &none       &none       &none                                               &none       &none       &none       &none               &none       &none
-                &none   &none       &kp RALT            &none       &none       &none                                               &none       &none       &none       &none               &kp RALT    &none
-                &none   &kp LGUI    &kp LALT            &kp LCTRL   &kp LSHFT   &none                                               &none       &kp RSHFT   &kp RCTRL   &kp LALT            &kp LGUI    &none
-                &none   &none       &mo LAYER_Scroll    &mkp MB5    &mkp MB4    &none                                               &none       &mkp MB4    &mkp MB5    &mo LAYER_Scroll    &none       &none
-                                    &none               &none       &mkp MCLK                                                                   &mkp MCLK   &none       &none
-                                                                                &mkp LCLK   &mkp RCLK   &none   &none   &mkp RCLK   &mkp LCLK
+                &none   &none       &none       &none       &none       &none                                               &none       &none       &none       &none       &none       &none
+                &none   &none       &kp RALT    &none       &none       &none                                               &none       &none       &none       &none       &kp RALT    &none
+                &none   &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none                                               &none       &kp RSHFT   &kp RCTRL   &kp LALT    &kp LGUI    &none
+                &none   &none       &none       &mkp MB5    &mkp MB4    &none                                               &none       &mkp MB4    &mkp MB5    &none       &none       &none
+                                    &none       &none       &mkp MCLK                                                                   &mkp MCLK   &none       &none
+                                                                        &mkp LCLK   &mkp RCLK   &none   &none   &mkp RCLK   &mkp LCLK
             >;
         };
 
@@ -275,7 +274,7 @@
 };
 
 &cirque_rh_listener {
-    input-processors = <&zip_xy_scaler 1 1>;
+    input-processors = <&zip_xy_scaler 3 2>;
 
     scroller {
         layers = <LAYER_Nav>;
